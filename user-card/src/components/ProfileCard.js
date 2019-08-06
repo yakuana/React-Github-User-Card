@@ -8,18 +8,15 @@ const ProfileCard = ({profile}) => {
 
       <Card.Content>
         <Card.Header>{profile.login}</Card.Header>
-        <Card.Meta>Public Repos: {profile.public_repos}</Card.Meta>
+        <Card.Meta>{profile.type}</Card.Meta>
         <Card.Description>
-            Name: {profile.name}{"\n"}
-        </Card.Description>
-        <Card.Description>
-            Bio: {profile.bio}
+            GitHub: {profile.html_url}
         </Card.Description>
       </Card.Content>
 
       <Card.Content extra>
           <Icon name='user'/>
-          Followers: {profile.followers} 
+          Id: {profile.id} 
       </Card.Content>
   </Card>
   )

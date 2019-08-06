@@ -22,7 +22,7 @@ class App extends Component {
 
       // check for unsuccessful fetch
       .catch(error => {
-        console.log("The API is currently down.", error);
+        console.log("The user's API is currently down.", error);
       });
   };
 
@@ -33,12 +33,12 @@ class App extends Component {
       return response.json();
     })
 
-    // set the state using the formatted data this.setState({ followers: followersArray })
+    // set the state using the formatted data 
     .then(followersArray => this.setState({ followers: followersArray}))
 
     // check for unsuccessful fetch
     .catch(error => {
-      console.log("The API is currently down.", error);
+      console.log("The followers' API is currently down.", error);
     });
   }
 
@@ -50,18 +50,16 @@ class App extends Component {
 
   render() {
 
-    
-
-    // console.log("current state:", this.state)
-
     return (
-      <div className="App">
-        <h1>Hello!</h1>
-        <ProfileCard profile={this.state.profile}/>
-
-        {this.state.followers.map((follower) => (
-          <ProfileCard profile={follower}/>
-        ))}
+      <div className="app-container">
+        <h1 className="heading">Welcome to {this.state.profile.login}'s GitHub</h1>
+          <div className="users">
+            <ProfileCard profile={this.state.profile}/>
+            {this.state.followers.map((follower) => {
+              console.log(follower); 
+              return <ProfileCard profile={follower} key={follower.id}/>} 
+            )}
+          </div>
       </div>
     )
   } 
